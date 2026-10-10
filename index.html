@@ -9,17 +9,17 @@
 <style>
 /* Layout: envelope intro gate → long night-party scroll (cake / memory wall / wish board), ambient balloons drifting behind every section */
 :root{
-  --bg:#071b33;
-  --bg-soft:#0f2c4d;
-  --surface:#163c66;
-  --surface-2:#1c4a7c;
-  --fg:#eef7ff;
-  --fg-dim:#aed1ef;
-  --accent:#38bdf8;
-  --accent-2:#0ea5e9;
+  --bg:#072a52;
+  --bg-soft:#0c3f72;
+  --surface:#135490;
+  --surface-2:#1865aa;
+  --fg:#f5fbff;
+  --fg-dim:#bfe3fa;
+  --accent:#00d4ff;
+  --accent-2:#0096ff;
   --accent-3:#ff8fc4;
-  --line: rgba(238,247,255,.16);
-  --shadow: rgba(2,8,20,.55);
+  --line: rgba(245,251,255,.2);
+  --shadow: rgba(2,8,20,.5);
   color-scheme: dark;
   --font-display:'Fraunces', Georgia, serif;
   --font-body:'Figtree', system-ui, -apple-system, sans-serif;
@@ -27,18 +27,18 @@
 }
 @media (prefers-color-scheme: light){
   :root:not([data-theme="dark"]){
-    --bg:#eaf6ff; --bg-soft:#dff1ff; --surface:#ffffff; --surface-2:#f3fbff;
-    --fg:#082846; --fg-dim:#3f6b8f;
-    --accent:#0ea5e9; --accent-2:#0284c7; --accent-3:#ec4899;
-    --line: rgba(8,40,70,.14); --shadow: rgba(8,40,70,.16);
+    --bg:#c9ecff; --bg-soft:#b3e4ff; --surface:#ffffff; --surface-2:#f0faff;
+    --fg:#04203a; --fg-dim:#235d87;
+    --accent:#00c2ff; --accent-2:#0077cc; --accent-3:#ec4899;
+    --line: rgba(4,32,58,.16); --shadow: rgba(4,32,58,.18);
     color-scheme: light;
   }
 }
 :root[data-theme="light"]{
-  --bg:#eaf6ff; --bg-soft:#dff1ff; --surface:#ffffff; --surface-2:#f3fbff;
-  --fg:#082846; --fg-dim:#3f6b8f;
-  --accent:#0ea5e9; --accent-2:#0284c7; --accent-3:#ec4899;
-  --line: rgba(8,40,70,.14); --shadow: rgba(8,40,70,.16);
+  --bg:#c9ecff; --bg-soft:#b3e4ff; --surface:#ffffff; --surface-2:#f0faff;
+  --fg:#04203a; --fg-dim:#235d87;
+  --accent:#00c2ff; --accent-2:#0077cc; --accent-3:#ec4899;
+  --line: rgba(4,32,58,.16); --shadow: rgba(4,32,58,.18);
   color-scheme: light;
 }
 
@@ -129,19 +129,6 @@ section{padding-block:72px;position:relative}
 .lb-nav{background:var(--surface);border:1px solid var(--line);color:var(--fg);width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:1.1rem}
 .lb-close{position:absolute;top:18px;right:20px;background:none;border:none;color:var(--fg);font-size:1.6rem;cursor:pointer;line-height:1}
 
-/* ---- wishes ---- */
-.board{background:var(--bg-soft);border:1px solid var(--line);border-radius:22px;padding:clamp(20px,5vw,36px);margin-top:28px}
-.note-form{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
-.note-form textarea{flex:1;min-width:0;resize:vertical;min-height:52px;background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-family:var(--font-body);font-size:.92rem}
-.note-form textarea:focus{outline:2px solid var(--accent-3);outline-offset:1px}
-.notes{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
-.note{background:#f6e7c8;color:#2a1733;padding:14px 14px 10px;border-radius:3px;font-family:var(--font-mono);font-size:.78rem;line-height:1.45;box-shadow:0 10px 20px -14px var(--shadow);position:relative}
-@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .note{background:#fff7e0}}
-:root[data-theme="light"] .note{background:#fff7e0}
-.note .sig{display:block;margin-top:8px;color:#7a5a37;font-style:italic;font-size:.74rem}
-.note .del{position:absolute;top:4px;right:6px;border:none;background:none;color:#7a5a37;cursor:pointer;font-size:.9rem;opacity:.6}
-.note .del:hover{opacity:1}
-
 footer{padding-block:60px 90px;text-align:center;color:var(--fg-dim);font-size:.85rem}
 footer .signoff{font-family:var(--font-display);font-style:italic;font-size:1.3rem;color:var(--fg);margin-bottom:10px}
 
@@ -225,18 +212,6 @@ footer .signoff{font-family:var(--font-display);font-style:italic;font-size:1.3r
     <div class="gallery-grid" id="galleryGrid"></div>
   </section>
 
-  <section class="wrap" id="wishes">
-    <span class="eyebrow">Wish board</span>
-    <h2 style="font-size:clamp(1.6rem,5vw,2.2rem)">Leave her a note</h2>
-    <div class="board">
-      <div class="note-form">
-        <textarea id="noteInput" maxlength="180" placeholder="Write a birthday wish for Faru..."></textarea>
-        <button class="btn" id="pinBtn" style="align-self:flex-start">Pin it</button>
-      </div>
-      <div class="notes" id="notes"></div>
-    </div>
-  </section>
-
   <footer class="wrap">
     <p class="signoff">Happy birthday, Faru. Go be impossibly spoiled today.</p>
     <p>made with love, balloons, and slightly too much confetti</p>
@@ -289,7 +264,7 @@ footer .signoff{font-family:var(--font-display);font-style:italic;font-size:1.3r
   }
   window.addEventListener('resize', resizeBg); resizeBg();
 
-  var palette=['#38bdf8','#0ea5e9','#7dd3fc','#bae6fd','#ff8fc4'];
+  var palette=['#00d4ff','#0096ff','#7fe8ff','#b8f2ff','#ff8fc4'];
   function makeBalloon(){
     return {
       x: Math.random()*W,
@@ -407,7 +382,7 @@ footer .signoff{font-family:var(--font-display);font-style:italic;font-size:1.3r
   }
 
   /* ---------------- gallery ---------------- */
-  var grads=['linear-gradient(135deg,#38bdf8,#0ea5e9)','linear-gradient(135deg,#7dd3fc,#38bdf8)','linear-gradient(135deg,#0ea5e9,#7dd3fc)','linear-gradient(135deg,#38bdf8,#ff8fc4)'];
+  var grads=['linear-gradient(135deg,#00d4ff,#0096ff)','linear-gradient(135deg,#7fe8ff,#00d4ff)','linear-gradient(135deg,#0096ff,#7fe8ff)','linear-gradient(135deg,#00d4ff,#ff8fc4)'];
   var items=[
     {img:"images/01.jpg", caption:"Flowers in hand, stealing the whole frame"},
     {img:"images/02.jpg", caption:"The one where we both got caught smiling"},
@@ -474,51 +449,6 @@ footer .signoff{font-family:var(--font-display);font-style:italic;font-size:1.3r
     if(e.key==='ArrowRight') document.getElementById('lbNext').click();
     if(e.key==='ArrowLeft') document.getElementById('lbPrev').click();
   });
-
-  /* ---------------- wish board ---------------- */
-  var notesEl=document.getElementById('notes');
-  var seedNotes=[
-    {text:"Hope today is as wonderful as you make everyone else's days.", sig:"a friend"},
-    {text:"Cake first, responsibilities later. Those are the rules today.", sig:"the wish board"}
-  ];
-  function loadNotes(){
-    try{
-      var raw = localStorage.getItem('faru-wishes');
-      return raw ? JSON.parse(raw) : [];
-    }catch(e){ return []; }
-  }
-  function saveNotes(list){
-    try{ localStorage.setItem('faru-wishes', JSON.stringify(list)); }catch(e){}
-  }
-  function renderNotes(){
-    notesEl.innerHTML='';
-    seedNotes.forEach(function(n){ notesEl.appendChild(noteEl(n.text, n.sig, false)); });
-    loadNotes().forEach(function(n, idx){ notesEl.appendChild(noteEl(n.text, 'you', true, idx)); });
-  }
-  function noteEl(text, sig, removable, idx){
-    var d=document.createElement('div');
-    d.className='note';
-    d.style.transform='rotate('+((Math.random()-.5)*4).toFixed(1)+'deg)';
-    var del = removable ? '<button class="del" aria-label="Remove" data-idx="'+idx+'">&times;</button>' : '';
-    d.innerHTML = del + escapeHtml(text) + '<span class="sig">— '+escapeHtml(sig)+'</span>';
-    return d;
-  }
-  function escapeHtml(s){ var p=document.createElement('p'); p.textContent=s; return p.innerHTML; }
-  notesEl.addEventListener('click', function(e){
-    var btn=e.target.closest('.del');
-    if(!btn) return;
-    var idx=parseInt(btn.getAttribute('data-idx'),10);
-    var list=loadNotes(); list.splice(idx,1); saveNotes(list); renderNotes();
-  });
-  document.getElementById('pinBtn').addEventListener('click', function(){
-    var ta=document.getElementById('noteInput');
-    var val=ta.value.trim();
-    if(!val) return;
-    var list=loadNotes(); list.push({text:val}); saveNotes(list);
-    ta.value='';
-    renderNotes();
-  });
-  renderNotes();
 
   /* ---------------- background music (synthesized Happy Birthday loop) ---------------- */
   var musicBtn=document.getElementById('musicToggle');
