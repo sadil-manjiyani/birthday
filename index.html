@@ -9,17 +9,17 @@
 <style>
 /* Layout: envelope intro gate → long night-party scroll (cake / memory wall / wish board), ambient balloons drifting behind every section */
 :root{
-  --bg:#0d1130;
-  --bg-soft:#171d52;
-  --surface:#202a63;
-  --surface-2:#28326f;
-  --fg:#f4f6ff;
-  --fg-dim:#aab0e6;
-  --accent:#ff3d9a;
-  --accent-2:#2e9bff;
-  --accent-3:#b983ff;
-  --line: rgba(244,246,255,.16);
-  --shadow: rgba(4,5,22,.55);
+  --bg:#071b33;
+  --bg-soft:#0f2c4d;
+  --surface:#163c66;
+  --surface-2:#1c4a7c;
+  --fg:#eef7ff;
+  --fg-dim:#aed1ef;
+  --accent:#38bdf8;
+  --accent-2:#0ea5e9;
+  --accent-3:#ff8fc4;
+  --line: rgba(238,247,255,.16);
+  --shadow: rgba(2,8,20,.55);
   color-scheme: dark;
   --font-display:'Fraunces', Georgia, serif;
   --font-body:'Figtree', system-ui, -apple-system, sans-serif;
@@ -27,18 +27,18 @@
 }
 @media (prefers-color-scheme: light){
   :root:not([data-theme="dark"]){
-    --bg:#eef3ff; --bg-soft:#ffe6f2; --surface:#ffffff; --surface-2:#fff5fa;
-    --fg:#1b2250; --fg-dim:#5c63a0;
-    --accent:#e8137a; --accent-2:#1f7ae0; --accent-3:#8a4fe0;
-    --line: rgba(27,34,80,.14); --shadow: rgba(27,34,80,.16);
+    --bg:#eaf6ff; --bg-soft:#dff1ff; --surface:#ffffff; --surface-2:#f3fbff;
+    --fg:#082846; --fg-dim:#3f6b8f;
+    --accent:#0ea5e9; --accent-2:#0284c7; --accent-3:#ec4899;
+    --line: rgba(8,40,70,.14); --shadow: rgba(8,40,70,.16);
     color-scheme: light;
   }
 }
 :root[data-theme="light"]{
-  --bg:#eef3ff; --bg-soft:#ffe6f2; --surface:#ffffff; --surface-2:#fff5fa;
-  --fg:#1b2250; --fg-dim:#5c63a0;
-  --accent:#e8137a; --accent-2:#1f7ae0; --accent-3:#8a4fe0;
-  --line: rgba(27,34,80,.14); --shadow: rgba(27,34,80,.16);
+  --bg:#eaf6ff; --bg-soft:#dff1ff; --surface:#ffffff; --surface-2:#f3fbff;
+  --fg:#082846; --fg-dim:#3f6b8f;
+  --accent:#0ea5e9; --accent-2:#0284c7; --accent-3:#ec4899;
+  --line: rgba(8,40,70,.14); --shadow: rgba(8,40,70,.16);
   color-scheme: light;
 }
 
@@ -289,7 +289,7 @@ footer .signoff{font-family:var(--font-display);font-style:italic;font-size:1.3r
   }
   window.addEventListener('resize', resizeBg); resizeBg();
 
-  var palette=['#ff3d9a','#2e9bff','#b983ff','#6fc3ff','#ff8fc4'];
+  var palette=['#38bdf8','#0ea5e9','#7dd3fc','#bae6fd','#ff8fc4'];
   function makeBalloon(){
     return {
       x: Math.random()*W,
@@ -407,7 +407,7 @@ footer .signoff{font-family:var(--font-display);font-style:italic;font-size:1.3r
   }
 
   /* ---------------- gallery ---------------- */
-  var grads=['linear-gradient(135deg,#2e9bff,#ff3d9a)','linear-gradient(135deg,#b983ff,#2e9bff)','linear-gradient(135deg,#ff3d9a,#b983ff)','linear-gradient(135deg,#6fc3ff,#ff8fc4)'];
+  var grads=['linear-gradient(135deg,#38bdf8,#0ea5e9)','linear-gradient(135deg,#7dd3fc,#38bdf8)','linear-gradient(135deg,#0ea5e9,#7dd3fc)','linear-gradient(135deg,#38bdf8,#ff8fc4)'];
   var items=[
     {img:"images/01.jpg", caption:"Flowers in hand, stealing the whole frame"},
     {img:"images/02.jpg", caption:"The one where we both got caught smiling"},
